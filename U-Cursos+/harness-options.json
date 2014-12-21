@@ -2,10 +2,10 @@
  "check_memory": false, 
  "enable_e10s": false, 
  "is-sdk-bundled": false, 
- "jetpackID": "jid1-7hAIkayjMedS6w@jetpack", 
+ "jetpackID": "maller.lagoon@gmail.com", 
  "loader": "addon-sdk/lib/sdk/loader/cuddlefish.js", 
  "main": "main", 
- "mainPath": "ucursos/main", 
+ "mainPath": "UCursosPlus/main", 
  "manifest": {
   "ucursos/main": {
    "docsSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", 
@@ -34,15 +34,15 @@
    "license": "MPL 2.0", 
    "name": "addon-sdk"
   }, 
-  "ucursos": {
+  "UCursosPlus": {
    "description": "Extension de funcionalidades para U-Cursos", 
    "license": "MPL 2.0", 
    "main": "main", 
-   "name": "ucursos", 
-   "version": "0.3"
+   "name": "U-Cursos+", 
+   "version": "1.5.5"
   }
  }, 
- "name": "ucursos", 
+ "name": "UCursosPlus", 
  "parseable": false, 
  "preferencesBranch": "Maller Lagoon", 
  "sdkVersion": "1.16", 
