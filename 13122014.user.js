@@ -35,7 +35,7 @@ function expandBlock(btn_id)
 	}
 }
 
-var all = document.getElementsByTagName('a');
+var all = document.getElementsByTagName('a'); /* ojo con esta linea, si falla uplas es porque hay que cambiar esto*/
 for (var i = 0, max = all.length; i < max; i++)
 {
 	var href = all[i].getAttribute('href');
@@ -46,26 +46,16 @@ for (var i = 0, max = all.length; i < max; i++)
 	var len = href.length;
 	var parent = all[i].parentNode;
 		//Imágenes
-	if (href.substr(len - 4) == '.bmp'
-	|| href.substr(len - 4) == '.BMP'
-	|| href.substr(len - 4) == '.gif'
-	|| href.substr(len - 4) == '.GIF'
-	|| href.substr(len - 4) == '.jpg'
-	|| href.substr(len - 4) == '.JPG'
-	|| href.substr(len - 5) == '.jpeg'
-	|| href.substr(len - 5) == '.JPEG'
-	|| href.substr(len - 4) == '.png'
-	|| href.substr(len - 4) == '.PNG'
-	|| href.substr(len - 4) == '.svg'
-	|| href.substr(len - 4) == '.SVG'
-	|| href.substr(len - 10) == '.jpg:large'
-	|| href.substr(len - 10) == '.png:large'
-	|| href.substr(len - 10) == '.gif:large'
-	|| href.substr(len - 10) == '.JPG:large'
-	|| href.substr(len - 10) == '.PNG:large'
-	|| href.substr(len - 10) == '.GIF:large'
-	|| href.substr(len - 11) == '.png?psid=1'
-	|| href.substr(len - 11) == '.PNG?PSID=1')
+	if (href.substr(len - 4).toLowerCase() == '.bmp'
+	|| href.substr(len - 4).toLowerCase() == '.gif'
+	|| href.substr(len - 4).toLowerCase() == '.jpg'
+	|| href.substr(len - 5).toLowerCase() == '.jpeg'
+	|| href.substr(len - 4).toLowerCase() == '.png'
+	|| href.substr(len - 4).toLowerCase() == '.svg'
+	|| href.substr(len - 10).toLowerCase() == '.jpg:large'
+	|| href.substr(len - 10).toLowerCase() == '.png:large'
+	|| href.substr(len - 10).toLowerCase() == '.gif:large'
+	|| href.substr(len - 11).toLowerCase() == '.png?psid=1')
 	{
 		if (href.substr(0, 25).toLowerCase() == 'http://subefotos.com/ver/'|| href.substr(0, 26).toLowerCase() == 'https://subefotos.com/ver/') // bloque para los archivos del servidor de subefotos.com
 		{
@@ -78,7 +68,6 @@ for (var i = 0, max = all.length; i < max; i++)
 			{
 				vCode = href.substr(26);
 			}
-
 			var div = document.createElement('div');
 			div.setAttribute('class', 'imagen');
 			var img = document.createElement('img');
@@ -129,11 +118,11 @@ for (var i = 0, max = all.length; i < max; i++)
 
 	else if
 	//Videos Youtube no empotrados
-	(href.substr(0, 15) == 'http://youtu.be'
-	|| href.substr(0, 16) == 'https://youtu.be'
-	|| href.substr(0, 28) == 'http://www.youtube.com/watch'
-	|| href.substr(0, 29) == 'https://www.youtube.com/watch'
-	|| href.substr(0, 21) == 'www.youtube.com/watch')
+	(href.substr(0, 15).toLowerCase() == 'http://youtu.be'
+	|| href.substr(0, 16).toLowerCase() == 'https://youtu.be'
+	|| href.substr(0, 28).toLowerCase() == 'http://www.youtube.com/watch'
+	|| href.substr(0, 29).toLowerCase() == 'https://www.youtube.com/watch'
+	|| href.substr(0, 21).toLowerCase() == 'www.youtube.com/watch')
 	{
 		var div = document.createElement('div');
 		div.setAttribute('class', 'video');
@@ -143,23 +132,23 @@ for (var i = 0, max = all.length; i < max; i++)
 		iframe.setAttribute('height', '315');
 		var vCode = 0;
 		//A continuacion extraemos el codigo del video del enlace:
-		if (href.substr(0, 15) == 'http://youtu.be')
+		if (href.substr(0, 15).toLowerCase() == 'http://youtu.be')
 		{
 			vCode = href.substr(16);
 		} 
-		else if (href.substr(0, 16) == 'https://youtu.be')
+		else if (href.substr(0, 16).toLowerCase() == 'https://youtu.be')
 		{
 			vCode = href.substr(17);
 		} 
-		else if (href.substr(0, 28) == 'http://www.youtube.com/watch')
+		else if (href.substr(0, 28).toLowerCase() == 'http://www.youtube.com/watch')
 		{
 			vCode = href.substr(31);
 		} 
-		else if (href.substr(0, 29) == 'https://www.youtube.com/watch')
+		else if (href.substr(0, 29).toLowerCase() == 'https://www.youtube.com/watch')
 		{
 			vCode = href.substr(32);
 		}
-		else if(href.substr(0, 21) == 'www.youtube.com/watch')
+		else if(href.substr(0, 21).toLowerCase() == 'www.youtube.com/watch')
 		{
 			vCode = href.substr(24);
 		}
@@ -198,16 +187,16 @@ for (var i = 0, max = all.length; i < max; i++)
 	}
 	//Videos Youtube empotrados
 	else if
-	(href.substr(0, 24) == 'http://youtube.com/embed'
-	|| href.substr(0, 25) == 'https://youtube.com/embed'
-	|| href.substr(0, 28) == 'http://www.youtube.com/embed'
-	|| href.substr(0, 29) == 'https://www.youtube.com/embed'
-	|| href.substr(0, 21) == 'www.youtube.com/embed'
-	|| href.substr(0, 17) == 'youtube.com/embed'
-	|| href.substr(0, 39) == 'http://www.dailymotion.com/embed/video/'
-	|| href.substr(0, 40) == 'https://www.dailymotion.com/embed/video/'
-	|| href.substr(0, 32) == 'www.dailymotion.com/embed/video/'
-	|| href.substr(0, 28) == 'dailymotion.com/embed/video/')
+	(href.substr(0, 24).toLowerCase() == 'http://youtube.com/embed'
+	|| href.substr(0, 25).toLowerCase() == 'https://youtube.com/embed'
+	|| href.substr(0, 28).toLowerCase() == 'http://www.youtube.com/embed'
+	|| href.substr(0, 29).toLowerCase() == 'https://www.youtube.com/embed'
+	|| href.substr(0, 21).toLowerCase() == 'www.youtube.com/embed'
+	|| href.substr(0, 17).toLowerCase() == 'youtube.com/embed'
+	|| href.substr(0, 39).toLowerCase() == 'http://www.dailymotion.com/embed/video/'
+	|| href.substr(0, 40).toLowerCase() == 'https://www.dailymotion.com/embed/video/'
+	|| href.substr(0, 32).toLowerCase() == 'www.dailymotion.com/embed/video/'
+	|| href.substr(0, 28).toLowerCase() == 'dailymotion.com/embed/video/')
 	{
 		var div = document.createElement('div');
 		div.setAttribute('class', 'video');
@@ -248,8 +237,9 @@ for (var i = 0, max = all.length; i < max; i++)
 
 /*********************trabajar en este codigo ***************************/
 	else if 
-	(href.substr(0, 25) == 'http://www.ign.com/videos'
-	|| href.substr(0, 18) == 'www.ign.com/videos')
+	(href.substr(0, 25).toLowerCase() == 'http://www.ign.com/videos'
+	||href.substr(0, 26).toLowerCase() == 'https://www.ign.com/videos'
+	|| href.substr(0, 18).toLowerCase() == 'www.ign.com/videos')
 	{
 		var div = document.createElement('div');
 		div.setAttribute('class', 'video');
@@ -257,9 +247,9 @@ for (var i = 0, max = all.length; i < max; i++)
 		var iframe = document.createElement('iframe');
 		iframe.setAttribute('width', '468');
 		iframe.setAttribute('height', '263');
-		var vCode = href;
+		
 		//A continuacion extraemos el codigo del video del enlace:
-
+		var vCode = href;
 		//creamos el objeto iframe necesario para insertar el video
 
 		iframe.setAttribute('src', 'http://widgets.ign.com/video/embed/content.html?url='.concat(vCode));
@@ -290,8 +280,8 @@ for (var i = 0, max = all.length; i < max; i++)
 		parent.insertBefore(btn, div);
 	}
 	else if 
-	(href.substr(0, 35) == 'http://widgets.ign.com/video/embed/'
-	|| href.substr(0, 21) == 'widgets.ign.com/video')
+	(href.substr(0, 35).toLowerCase() == 'http://widgets.ign.com/video/embed/'
+	|| href.substr(0, 21).toLowerCase() == 'widgets.ign.com/video')
 	{
 
 		var div = document.createElement('div');
